@@ -49,16 +49,30 @@ multiplyNumsInRange(6)
 
 # 6
 def countDigitsInNumber(n):
-  print(len(str(n)))
+  return len(str(n))
 countDigitsInNumber(1000)
 # 7
 def isPalindrome(n):
   string = str(n)
   length = int(len(string))
-  half = int(length / 2)
+  half = int(length // 2)
   isPalindrome = False
-  if string[0:half] == string[half:length][::-1]:
-    isPalindrome = True
+  for i in range(half):
+    if string[i] == string[-i]:
+      isPalindrome = True
   return isPalindrome
     
-print(isPalindrome(567765))
+print(isPalindrome(5678765))
+
+
+def isPalindrome(n):
+  length = countDigitsInNumber(n)
+  for i in range(length//2):
+    size = countDigitsInNumber(n)
+    first = n // (10**(size - 1))
+    last = n % 10
+    if first != last: 
+      return False
+    n = (n % (10**(size - 1)))//10
+  return True
+print(isPalindrome(56755765))
